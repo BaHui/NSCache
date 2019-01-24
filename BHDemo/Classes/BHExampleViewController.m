@@ -64,7 +64,7 @@ static NSString *const DEMO_VIEWS_STORYBOARD_NAME = @"DemoViews";
 
 /** `countLimit & totalCostLimit` 设置 缓存数量&最大花费量
  *  `setObject: forKey:` & `setObject: forKey: cost:`
- * 当总花费量超出最大花费量, 默认会先移除最先添加的对象
+ * 当缓存数量大于最大缓存数量 或者 总花费量超出最大花费量, 默认会先移除最先添加的对象
  */
 - (void)useCacheForCountAndTotalCostLimit {
 	self.cache = [[NSCache alloc] init];
