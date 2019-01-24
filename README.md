@@ -1,11 +1,10 @@
-
 # viOS之NSCache
 
 ## 简述
-1. 官方提供的缓存类，用法与NSMutableDictionary的用法很相似，使用它来管理缓存。     
-2. 在系统内存很低时，会自动释放一些对象;  
-3. NSCache是线程安全的。   
-4. NSCache的key只是做强引用，不需要实现NSCopying协议。   
+1. 官方提供的缓存类，用法与NSMutableDictionary的用法很相似，使用它来管理缓存。
+2. 在系统内存很低时，会自动释放一些对象;
+3. NSCache是线程安全的。
+4. NSCache的key只是做强引用，不需要实现NSCopying协议。
 
 ## 官方接口
 ```
@@ -31,7 +30,7 @@
 
 ## 属性设置
 
-##### 情景一: 仅设置缓存数量: `countLimit`, 可用`setObject: forKey:`加入对象 
+##### 情景一: 仅设置缓存数量: `countLimit`, 可用`setObject: forKey:`加入对象
 ```
 /** `countLimit` 设置缓存数量
 *  `setObject: forKey:`
@@ -102,4 +101,5 @@ NSLog(@"willEvictObject: %@", obj);
 ### 交流与建议
 *   GitHub：[https://github.com/BaHui](https://github.com/BaHui)
 *   邮    箱：[qiaobahuiyouxiang@163.com](mailto:qiaobahuiyouxiang@163.com)
+
 
