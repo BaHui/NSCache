@@ -1,4 +1,4 @@
-# viOS之NSCache
+# iOS之NSCache
 
 ## 简述
 1. 官方提供的缓存类，用法与NSMutableDictionary的用法很相似，使用它来管理缓存。
@@ -37,18 +37,18 @@
 * 当数量超出时, 默认会先移除最先添加的对象
 */
 - (void)useCacheForOnlyCountLimit {
-self.cache = [[NSCache alloc] init];
-self.cache.countLimit = 5; // 设置缓存数量 <<
-self.cache.delegate = self; // 设置代理对象
+	self.cache = [[NSCache alloc] init];
+	self.cache.countLimit = 5; // 设置缓存数量 <<
+	self.cache.delegate = self; // 设置代理对象
 
 // 模拟存储数据
-for (NSInteger i = 1; i <= 8; i++) {
-[self.cache setObject:@(i) forKey:@(i)];
-}
+	for (NSInteger i = 1; i <= 8; i++) {
+		[self.cache setObject:@(i) forKey:@(i)];
+	}
 }
 
 - (void)cache:(NSCache *)cache willEvictObject:(id)obj {
-NSLog(@"willEvictObject: %@", obj); //   输出: 1 2 3
+		NSLog(@"willEvictObject: %@", obj); //   输出: 1 2 3
 }
 ```
 
@@ -59,18 +59,18 @@ NSLog(@"willEvictObject: %@", obj); //   输出: 1 2 3
 * 当总花费量超出最大花费量, 默认会先移除最先添加的对象
 */
 - (void)useCacheForOnlyTotalCostLimit {
-self.cache = [[NSCache alloc] init];
-self.cache.totalCostLimit = 10; // 设置缓存容量 <<
-self.cache.delegate = self; // 设置代理对象
+	self.cache = [[NSCache alloc] init];
+	self.cache.totalCostLimit = 10; // 设置缓存容量 <<
+	self.cache.delegate = self; // 设置代理对象
 
 // 模拟存储数据
-for (NSInteger i = 1; i <= 8; i++) {
-[self.cache setObject:@(i) forKey:@(i) cost:5];
-}
+	for (NSInteger i = 1; i <= 8; i++) {
+		[self.cache setObject:@(i) forKey:@(i) cost:5];
+	}
 }
 
 - (void)cache:(NSCache *)cache willEvictObject:(id)obj {
-NSLog(@"willEvictObject: %@", obj); // 1 2 3 4 5 6
+	NSLog(@"willEvictObject: %@", obj); // 1 2 3 4 5 6
 }
 ```
 ##### 情景三: 设置 缓存数量&最大花费量 `countLimit & totalCostLimit` , 可用`setObject: forKey:` &  `setObject: forKey: cost:`加入对象
@@ -80,21 +80,21 @@ NSLog(@"willEvictObject: %@", obj); // 1 2 3 4 5 6
 * 当缓存数量大于最大缓存数量 或者 总花费量超出最大花费量, 默认会先移除最先添加的对象
 */
 - (void)useCacheForCountAndTotalCostLimit {
-self.cache = [[NSCache alloc] init];
-self.cache.countLimit = 5; // 设置缓存数量 <<
-self.cache.totalCostLimit = 20; // 设置缓存容量 <<
-self.cache.delegate = self; // 设置代理对象
+	self.cache = [[NSCache alloc] init];
+	self.cache.countLimit = 5; // 设置缓存数量 <<
+	self.cache.totalCostLimit = 20; // 设置缓存容量 <<
+	self.cache.delegate = self; // 设置代理对象
 
 // 模拟存储数据
-for (NSInteger i = 1; i <= 8; i++) {
-[self.cache setObject:@(i+100) forKey:@(i+100)];
-[self.cache setObject:@(i) forKey:@(i) cost:1];
-}
+	for (NSInteger i = 1; i <= 8; i++) {
+		[self.cache setObject:@(i+100) forKey:@(i+100)];
+		[self.cache setObject:@(i) forKey:@(i) cost:1];
+	}
 }
 
 - (void)cache:(NSCache *)cache willEvictObject:(id)obj {
-NSLog(@"willEvictObject: %@", obj);
-// 101 1 102 2 103 3 104 4 105 5 106
+	NSLog(@"willEvictObject: %@", obj);
+	// 101 1 102 2 103 3 104 4 105 5 106
 }
 ```
 
